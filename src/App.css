@@ -1,38 +1,172 @@
-.App {
-  text-align: center;
+#background {
+  background-color: #333333;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#card {
+  background: white;
+  width: 24%;
+  height: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  border: 5px solid;
+  border-image: linear-gradient(45deg, #ff69b4, #ff8c94) 1;
+}
+
+p {
+  font-size: 1.2em;
+  color: black;
+  margin-top: 15px;
+  text-align: center;
+}
+
+#header {
+  font-size: 2.5em;
+  color: black;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  display: flex;
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0.375em;
+}
+
+label input {
+  position: absolute;
+  left: -9999px;
+}
+
+label input:checked + span {
+  background-color: rgba(255, 105, 180, 0.84);
+}
+
+label input:checked + span:before {
+  box-shadow: inset 0 0 0 0.4375em #ff69b4;
+}
+
+label span {
+  display: flex;
+  align-items: center;
+  padding: 0.375em 0.75em 0.375em 0.375em;
+  border-radius: 99em;
+  transition: 0.25s ease;
+}
+
+label span:hover {
+  background-color: rgba(255, 105, 180, 0.84);
+}
+
+label span:before {
+  display: flex;
+  flex-shrink: 0;
+  content: "";
+  background-color: #fff;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  margin-right: 0.375em;
+  transition: 0.25s ease;
+  box-shadow: inset 0 0 0 0.125em #ff69b4;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ff69b4;
+  border: none;
+  border-radius: 5px;
   color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: center;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background-color: #ff8c94;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.arrow {
+  position: fixed;
+  background: transparent;
+  left: 90vw;
+  top: 40vh;
+}
+
+.actions {
+  font-size: 48px;
+  width: 10%;
+  height: 20%;
+}
+
+.flashcardsbg {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+#add {
+  font-size: 55px;
+}
+
+.modal {
+  background-color: white;
+  position: absolute;
+  width: 25%;
+  height: 40%;
+  align-items: center;
+  justify-content: center;
+}
+
+#cross {
+  position: fixed;
+  margin-left: 1%;
+  margin-bottom: 100%;
+  margin-top: 8px;
+  font-size: 30px;
+  background-color: transparent;
+  color: black;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  align-self: center;
+  justify-self: center;
+}
+.form input {
+  width: 50%;
+  height: 30px;
+  border: 2px solid #ff1493;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 16px;
+  color: #333;
+  background-color: #ffe4e1;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.form input:hover {
+  border-color: #ff69b4;
+  background-color: #ffc0cb;
+}
+
+.form input:focus {
+  border-color: #ff69b4;
+  box-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
+  background-color: #ffffff;
 }
