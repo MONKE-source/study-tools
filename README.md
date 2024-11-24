@@ -1,9 +1,10 @@
 # Some study tools - to be updated further
+
 1. Flashcards
 2. Pomodoro timer
+3. Todo List
 
-
-# Getting Started with Create React App
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

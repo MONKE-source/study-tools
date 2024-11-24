@@ -11,8 +11,176 @@ function App() {
       <Routes>
         <Route path="/" element={<PomodoroTimer />} />
         <Route path="/flashcards" element={<Flashcards />} />
+        <Route path="/list" element={<TodoList />} />
       </Routes>
     </BrowserRouter>
+  );
+}
+
+function TodoList() {
+  const [tasks, setTasks] = useState([]);
+  const [task, setTask] = useState("");
+  const navigate = useNavigate();
+
+  const handleAddTask = () => {
+    if (task !== "") {
+      setTasks([...tasks, task]);
+      setTask("");
+    } else {
+      alert("Please enter a task!");
+    }
+  };
+
+  const handleDeleteTask = (index) => {
+    setTasks(tasks.filter((_, i) => i !== index));
+  };
+
+  return (
+    <div id="background">
+      <div id="card">
+        <p id="header">Todo List</p>
+        <div
+          style={{
+            gap: "10px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <input
+            type="text"
+            value={task}
+            onChange={(e) => setTask(e.target.value)}
+            placeholder="Enter a new task"
+            id="Linput"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleAddTask();
+              }
+            }}
+          />
+          <button onClick={handleAddTask} style={{ marginTop: "0" }}>
+            Add Task
+          </button>
+        </div>
+        <ul
+          style={{
+            alignItems: "flex-end",
+            width: "100%",
+            listStyleType: "none",
+            padding: 0,
+            maxHeight: "100%", // Set a fixed height for the container
+            overflowY: "auto", // Enable vertical scrolling
+          }}
+        >
+          {tasks.map((task, index) => (
+            <li
+              key={index}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                width: "100%",
+                padding: "10px 0",
+                marginTop: "10px",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  width: "90%",
+                  padding: "10px",
+                  border: "1px solid #ccc",
+                  borderRadius: "5px",
+                  backgroundColor: "#f9f9f9",
+                }}
+              >
+                <span>
+                  {index + 1}. {task}
+                </span>
+                <button
+                  style={{ marginLeft: "auto" }}
+                  onClick={() => handleDeleteTask(index)}
+                >
+                  Delete
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <button className="arrow" onClick={() => navigate("/")}>
+          <svg
+            fill="#000000"
+            viewBox="0 0 24 24"
+            id="right-arrow-circle"
+            data-name="Flat Color"
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon flat-color"
+            width={120}
+            height={120}
+          >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <circle
+                id="primary"
+                cx="12"
+                cy="12"
+                r="10"
+                style={{ fill: "#000000" }}
+              ></circle>
+              <path
+                id="secondary"
+                d="M17.62,11.31,14.5,9.17a1,1,0,0,0-1.5.69V11H7a1,1,0,0,0,0,2h6v1.14a1,1,0,0,0,1.5.69l3.12-2.14A.82.82,0,0,0,17.62,11.31Z"
+                style={{ fill: "#2ca9bc" }}
+              ></path>
+            </g>
+          </svg>
+        </button>
+        <button
+          className="arrow"
+          style={{ left: "1vw", transform: "rotate(180deg)" }}
+          onClick={() => navigate("/flashcards")}
+        >
+          <svg
+            fill="#000000"
+            viewBox="0 0 24 24"
+            id="right-arrow-circle"
+            data-name="Flat Color"
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon flat-color"
+            width={120}
+            height={120}
+          >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <circle
+                id="primary"
+                cx="12"
+                cy="12"
+                r="10"
+                style={{ fill: "#000000" }}
+              ></circle>
+              <path
+                id="secondary"
+                d="M17.62,11.31,14.5,9.17a1,1,0,0,0-1.5.69V11H7a1,1,0,0,0,0,2h6v1.14a1,1,0,0,0,1.5.69l3.12-2.14A.82.82,0,0,0,17.62,11.31Z"
+                style={{ fill: "#2ca9bc" }}
+              ></path>
+            </g>
+          </svg>
+        </button>
+      </div>
+    </div>
   );
 }
 
@@ -183,6 +351,43 @@ function PomodoroTimer() {
             </g>
           </svg>
         </button>
+        <button
+          className="arrow"
+          style={{ left: "1vw", transform: "rotate(180deg)" }}
+          onClick={() => navigate("/list")}
+        >
+          <svg
+            fill="#000000"
+            viewBox="0 0 24 24"
+            id="right-arrow-circle"
+            data-name="Flat Color"
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon flat-color"
+            width={120}
+            height={120}
+          >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <circle
+                id="primary"
+                cx="12"
+                cy="12"
+                r="10"
+                style={{ fill: "#000000" }}
+              ></circle>
+              <path
+                id="secondary"
+                d="M17.62,11.31,14.5,9.17a1,1,0,0,0-1.5.69V11H7a1,1,0,0,0,0,2h6v1.14a1,1,0,0,0,1.5.69l3.12-2.14A.82.82,0,0,0,17.62,11.31Z"
+                style={{ fill: "#2ca9bc" }}
+              ></path>
+            </g>
+          </svg>
+        </button>
       </div>
     </div>
   );
@@ -196,6 +401,7 @@ function Flashcards() {
   const [answer, setAnswer] = useState("");
   const [currentFlashcard, setCurrentFlashcard] = useState(null);
   const [showAnswer, setShowAnswer] = useState(false);
+  const navigate = useNavigate();
 
   const handleAddSubmit = () => {
     if (question !== "" && answer !== "") {
@@ -316,6 +522,76 @@ function Flashcards() {
           </div>
         </div>
       )}
+      <button
+        className="arrow"
+        style={{ left: "1vw", transform: "rotate(180deg)" }}
+        onClick={() => navigate("/")}
+      >
+        <svg
+          fill="#000000"
+          viewBox="0 0 24 24"
+          id="right-arrow-circle"
+          data-name="Flat Color"
+          xmlns="http://www.w3.org/2000/svg"
+          className="icon flat-color"
+          width={120}
+          height={120}
+        >
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <circle
+              id="primary"
+              cx="12"
+              cy="12"
+              r="10"
+              style={{ fill: "#000000" }}
+            ></circle>
+            <path
+              id="secondary"
+              d="M17.62,11.31,14.5,9.17a1,1,0,0,0-1.5.69V11H7a1,1,0,0,0,0,2h6v1.14a1,1,0,0,0,1.5.69l3.12-2.14A.82.82,0,0,0,17.62,11.31Z"
+              style={{ fill: "#2ca9bc" }}
+            ></path>
+          </g>
+        </svg>
+      </button>
+      <button className="arrow" onClick={() => navigate("/list")}>
+        <svg
+          fill="#000000"
+          viewBox="0 0 24 24"
+          id="right-arrow-circle"
+          data-name="Flat Color"
+          xmlns="http://www.w3.org/2000/svg"
+          className="icon flat-color"
+          width={120}
+          height={120}
+        >
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <circle
+              id="primary"
+              cx="12"
+              cy="12"
+              r="10"
+              style={{ fill: "#000000" }}
+            ></circle>
+            <path
+              id="secondary"
+              d="M17.62,11.31,14.5,9.17a1,1,0,0,0-1.5.69V11H7a1,1,0,0,0,0,2h6v1.14a1,1,0,0,0,1.5.69l3.12-2.14A.82.82,0,0,0,17.62,11.31Z"
+              style={{ fill: "#2ca9bc" }}
+            ></path>
+          </g>
+        </svg>
+      </button>
     </div>
   );
 }
