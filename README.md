@@ -1,4 +1,4 @@
-# Some study tools - to be updated further
+# Some study tools
 
 1. Flashcards
 2. Pomodoro timer
